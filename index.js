@@ -4,6 +4,7 @@ var createDelay = require('./src/create-delay')
 var createBiquadFilter = require('./src/create-biquad-filter')
 var createGain = require('./src/create-gain')
 var createAudioBufferSource = require('./src/create-audio-buffer-source')
+var createWaveShaper = require('./src/create-wave-shaper')
 
 var generate = function(node){
   var el = document.createElement('div')
@@ -17,9 +18,9 @@ var generate = function(node){
     case 'GainNode':
       createGain(el, node)
       break
-    // case 'WaveShaperNode':
-      // createWaveShaper(el, node)
-    //   break
+    case 'WaveShaperNode':
+      createWaveShaper(el, node)
+      break
     case 'AudioBufferSourceNode':
       createAudioBufferSource(el, node)
       break
