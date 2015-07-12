@@ -2,7 +2,7 @@ var tap = require('tape')
 var triggerChange = require('trigger-change')
 
 var context = new (window.AudioContext || window.webkitAudioContext)()
-var webAudioUI = require('./')
+var webAudioUI = require('./').generate
 
 tap.test('Oscillator',function(t){
   t.plan(6)
@@ -67,7 +67,6 @@ tap.test('Gain',function(t){
   t.plan(2)
   var gain = context.createGain()
   var el = webAudioUI(gain)
-
   var gainRange = el.querySelector('.gain-range')
   t.looseEqual(gainRange.value, 1, 'default')
   triggerChange(gainRange, 0.5)
@@ -75,10 +74,24 @@ tap.test('Gain',function(t){
   document.body.appendChild(el)
 })
 
-// tap.test('WaveShaper',function(t){
-//   var osc = context.createWaveShaper()
-//   var el = webAudioUI(osc)
-// })
+tap.test('WaveShaper',function(t){
+  t.plan(4)
+  var waveShaper = context.createWaveShaper()
+  var el = webAudioUI(waveShaper)
+
+  var amountRange = el.querySelector('.amount-range')
+  t.looseEqual(amountRange.value, 100, 'default')
+
+  var old = waveShaper.curve
+  triggerChange(amountRange, 50)
+  t.notEqual(old, waveShaper.curve, 'updates curve')
+
+  var oversampleSelect = el.querySelector('.over-sample-select')
+  t.looseEqual(oversampleSelect.value, 'none')
+  triggerChange(oversampleSelect, '4x')
+  t.equal(waveShaper.oversample, '4x', 'updates waveShaper')
+  document.body.appendChild(el)
+})
 
 tap.test('AudioBufferSource',function(t){
   t.plan(8)

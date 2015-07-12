@@ -24,9 +24,6 @@ var generate = function(node){
     case 'AudioBufferSourceNode':
       createAudioBufferSource(el, node)
       break
-    // case 'PannerNode':
-      // createPanner(el, node)
-    //   break
     case 'BiquadFilterNode':
       createBiquadFilter(el, node)
       break
