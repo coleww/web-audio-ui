@@ -16,13 +16,21 @@
   },
   "keywords": [
     "web-audio",
-    "audio",
-    "buttons"
+    "audio", 
+    "noise"
   ],
   "author": "Cole Willsea <coleww@gmail.com> (http://colewillsea.com/)",
   "license": "MIT",
   "dependencies": {
     "get-object-type": "0.0.1",
     "make-distortion-curve": "^1.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coleww/web-audio-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coleww/web-audio-ui/issues"
+  },
+  "homepage": "https://github.com/coleww/web-audio-ui"
 }
