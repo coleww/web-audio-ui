@@ -1,0 +1,33 @@
+.el-container {
+  border: 1px solid red;
+  padding: 5px;
+  margin: 3px;
+  border-radius: 5px;
+}
+
+.node-container{
+  border: 2px dashed blue;
+  width: 250px;
+  padding: 5px;
+  margin: 3px;
+  border-radius: 5px;
+}
+
+.label {
+  border-bottom: 1px solid black;
+}
+
+.node-label {
+  font-weight: bold;
+}
+
+.el-label {
+  color: green;
+}
+
+
+/* maybe you don't like the labels? */
+/*
+.label {
+  display: none;
+}*/
