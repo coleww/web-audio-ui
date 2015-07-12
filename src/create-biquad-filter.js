@@ -33,9 +33,9 @@ module.exports = function(el, node){
   var detuneRange = document.createElement("input")
   detuneRange.setAttribute("type", "range")
   detuneRange.setAttribute("class", "detune-range")
-  detuneRange.setAttribute("min", -2000)
+  detuneRange.setAttribute("min", -1200)
   detuneRange.setAttribute("value", node.detune.value)
-  detuneRange.setAttribute("max", 2000)
+  detuneRange.setAttribute("max", 1200)
   var detuneInfo = document.createElement("span")
   detuneInfo.setAttribute("class", "detune-info")
   detuneInfo.textContent = node.detune.value
