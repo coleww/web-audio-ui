@@ -2,7 +2,7 @@ var typey = require('get-object-type')
 var createOscillator = require('./src/create-oscillator')
 var createDelay = require('./src/create-delay')
 var createBiquadFilter = require('./src/create-biquad-filter')
-// var createGain = require('./src/create-gain')
+var createGain = require('./src/create-gain')
 // var createConvolver = require('./src/create-convolver')
 
 module.exports = function(node){
@@ -14,9 +14,9 @@ module.exports = function(node){
     case 'DelayNode':
       createDelay(el, node)
       break
-    // case 'GainNode':
-      // createGain(el, node)
-    //   break
+    case 'GainNode':
+      createGain(el, node)
+      break
     // case 'ConvolverNode':
       // createConvolver(el, node)
     //   break

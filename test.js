@@ -63,11 +63,17 @@ tap.test('BiquadFilter',function(t){
   document.body.appendChild(el)
 })
 
-// tap.test('Gain',function(t){
-//   var osc = context.createGain()
-//   var el = webAudioUI(osc)
+tap.test('Gain',function(t){
+  t.plan(2)
+  var gain = context.createGain()
+  var el = webAudioUI(gain)
 
-// })
+  var gainRange = el.querySelector('.gain-range')
+  t.looseEqual(gainRange.value, 1, 'default')
+  triggerChange(gainRange, 0.5)
+  t.looseEqual(gain.gain.value, 0.5, 'updates gain')
+  document.body.appendChild(el)
+})
 
 // tap.test('Convolver',function(t){
 //   var osc = context.createConvolver()
