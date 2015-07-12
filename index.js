@@ -1,9 +1,9 @@
 var typey = require('get-object-type')
 var createOscillator = require('./src/create-oscillator')
 var createDelay = require('./src/create-delay')
-// var createBiquadFilter = require('create-biquad-filter')
-// var createGain = require('create-gain')
-// var createConvolver = require('create-convolver')
+var createBiquadFilter = require('./src/create-biquad-filter')
+// var createGain = require('./src/create-gain')
+// var createConvolver = require('./src/create-convolver')
 
 module.exports = function(node){
   var el = document.createElement('div')
@@ -29,9 +29,9 @@ module.exports = function(node){
     // case 'PannerNode':
       // createPanner(el, node)
     //   break
-    // case 'BiquadFilterNode':
-      // createBiquadFilter(el, node)
-    //   break
+    case 'BiquadFilterNode':
+      createBiquadFilter(el, node)
+      break
     default:
       console.log('bork')
   }
