@@ -26,7 +26,7 @@ module.exports = function(el, node){
   delayLabel.textContent = "Time"
   delayLabel.setAttribute("class", "label el-label")
   delayContainer.appendChild(delayLabel)
-  delayContainer.appendChild(delayInfo)
   delayContainer.appendChild(delayRange)
+  delayContainer.appendChild(delayInfo)
   el.appendChild(delayContainer)
 }

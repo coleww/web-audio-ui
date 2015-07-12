@@ -24,8 +24,8 @@ module.exports = function(el, node){
   freqLabel.textContent = "frequency"
   freqLabel.setAttribute("class", "label el-label")
   freqContainer.appendChild(freqLabel)
-  freqContainer.appendChild(freqInfo)
   freqContainer.appendChild(freqRange)
+  freqContainer.appendChild(freqInfo)
   el.appendChild(freqContainer)
 
   var detuneContainer = document.createElement("div")
@@ -47,8 +47,8 @@ module.exports = function(el, node){
   detuneLabel.textContent = "detune"
   detuneLabel.setAttribute("class", "label el-label")
   detuneContainer.appendChild(detuneLabel)
-  detuneContainer.appendChild(detuneInfo)
   detuneContainer.appendChild(detuneRange)
+  detuneContainer.appendChild(detuneInfo)
   el.appendChild(detuneContainer)
 
   var typeContainer = document.createElement("div")
