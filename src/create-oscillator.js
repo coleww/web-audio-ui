@@ -13,7 +13,7 @@ module.exports = function(el, node){
   freqRange.setAttribute("class", "freq-range")
   freqRange.setAttribute("min", 1)
   freqRange.setAttribute("value", node.frequency.value)
-  freqRange.setAttribute("max", 20000)
+  freqRange.setAttribute("max", 5000)
   var freqInfo = document.createElement("span")
   freqInfo.setAttribute("class", "freq-info")
   freqRange.addEventListener("change", function(e){
