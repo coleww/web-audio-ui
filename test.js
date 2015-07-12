@@ -75,23 +75,45 @@ tap.test('Gain',function(t){
   document.body.appendChild(el)
 })
 
-// tap.test('Convolver',function(t){
-//   var osc = context.createConvolver()
-//   var el = webAudioUI(osc)
-
-// })
-
 // tap.test('WaveShaper',function(t){
 //   var osc = context.createWaveShaper()
 //   var el = webAudioUI(osc)
-
 // })
 
-// tap.test('AudioBufferSource',function(t){
-//   var osc = context.createAudioBufferSource()
-//   var el = webAudioUI(osc)
+tap.test('AudioBufferSource',function(t){
+  t.plan(8)
 
-// })
+  var abs = context.createBufferSource()
+  var el = webAudioUI(abs)
+
+  // Y NO DETUNE?!?!
+  // var detuneRange = el.querySelector('.detune-range')
+  // t.looseEqual(detuneRange.value, 0, 'default detune')
+  // triggerChange(detuneRange, 400)
+  // t.looseEqual(abs.detune.value, 400, 'updates abs')
+  // triggerChange(detuneRange, 0)
+
+  var loopSelect = el.querySelector('.loop-select')
+  t.looseEqual(loopSelect.value, 0)
+  triggerChange(loopSelect, 1)
+  t.ok(abs.loop, 'updates abs')
+
+  var loopStartRange = el.querySelector('.loop-start-range')
+  t.looseEqual(loopStartRange.value, 0, 'default loopStart')
+  triggerChange(loopStartRange, 5)
+  t.looseEqual(abs.loopStart, 5, 'updates abs')
+
+  var loopEndRange = el.querySelector('.loop-end-range')
+  t.looseEqual(loopEndRange.value, 0, 'default loopEnd')
+  triggerChange(loopEndRange, 1)
+  t.looseEqual(abs.loopEnd, 1, 'updates abs')
+
+  var playBackRange = el.querySelector('.play-back-range')
+  t.looseEqual(playBackRange.value, 1, 'default')
+  triggerChange(playBackRange, 1.5)
+  t.looseEqual(abs.playbackRate.value, 1.5, 'updates abs')
+  document.body.appendChild(el)
+})
 
 tap.test('Delay',function(t){
   t.plan(2)

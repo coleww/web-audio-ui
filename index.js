@@ -3,7 +3,7 @@ var createOscillator = require('./src/create-oscillator')
 var createDelay = require('./src/create-delay')
 var createBiquadFilter = require('./src/create-biquad-filter')
 var createGain = require('./src/create-gain')
-// var createConvolver = require('./src/create-convolver')
+var createAudioBufferSource = require('./src/create-audio-buffer-source')
 
 module.exports = function(node){
   var el = document.createElement('div')
@@ -23,9 +23,9 @@ module.exports = function(node){
     // case 'WaveShaperNode':
       // createWaveShaper(el, node)
     //   break
-    // case 'AudioBufferSourceNode':
-      // createAudioBufferSourceNode(el, node)
-    //   break
+    case 'AudioBufferSourceNode':
+      createAudioBufferSource(el, node)
+      break
     // case 'PannerNode':
       // createPanner(el, node)
     //   break
