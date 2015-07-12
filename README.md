@@ -14,7 +14,7 @@ CURRENTLY SUPPORTED:
 - delay
 - biquad filter
 - audio buffer source
-- wave shaper node (uses this [distortion curve](https://www.npmjs.com/package/make-distortion-curve))
+- wave shaper node (forcibly uses this [distortion curve](https://www.npmjs.com/package/make-distortion-curve))
 
 
 ### INSTALL
@@ -53,6 +53,7 @@ npm run watch
 python -m SimpleHTTPServer
 
 ## to run the tests
+# start watchify 
 npm run test
 # => open browser to localhost:8000/test.html and inspect the console
 ```
