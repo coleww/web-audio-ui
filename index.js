@@ -5,7 +5,7 @@ var createBiquadFilter = require('./src/create-biquad-filter')
 var createGain = require('./src/create-gain')
 var createAudioBufferSource = require('./src/create-audio-buffer-source')
 
-module.exports = function(node){
+var generate = function(node){
   var el = document.createElement('div')
   switch (typey(node)){
     case 'OscillatorNode':
@@ -17,9 +17,6 @@ module.exports = function(node){
     case 'GainNode':
       createGain(el, node)
       break
-    // case 'ConvolverNode':
-      // createConvolver(el, node)
-    //   break
     // case 'WaveShaperNode':
       // createWaveShaper(el, node)
     //   break
@@ -36,5 +33,14 @@ module.exports = function(node){
       console.log('bork')
   }
   return el
+}
+
+module.exports = {
+  generate: generate,
+  createOscillator: createOscillator,
+  createDelay: createDelay,
+  createBiquadFilter: createBiquadFilter,
+  createGain: createGain,
+  createAudioBufferSource: createAudioBufferSource
 }
 
