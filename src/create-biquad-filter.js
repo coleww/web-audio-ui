@@ -1,6 +1,13 @@
 module.exports = function(el, node){
-  el.setAttribute("class", "filter")
+  el.setAttribute("class", "node-container filter")
 
+  var label = document.createElement("span")
+  label.textContent = "BiquadFilter"
+  label.setAttribute("class", "label node-label")
+  el.appendChild(label)
+
+  var freqContainer = document.createElement("div")
+  freqContainer.setAttribute("class", "freq-container el-container")
   var freqRange = document.createElement("input")
   freqRange.setAttribute("type", "range")
   freqRange.setAttribute("class", "freq-range")
@@ -13,9 +20,16 @@ module.exports = function(el, node){
     node.frequency.value = e.target.valueAsNumber
     freqInfo.textContent = e.target.valueAsNumber
   })
-  el.appendChild(freqInfo)
-  el.appendChild(freqRange)
+  var freqLabel = document.createElement("span")
+  freqLabel.textContent = "frequency"
+  freqLabel.setAttribute("class", "label el-label")
+  freqContainer.appendChild(freqLabel)
+  freqContainer.appendChild(freqInfo)
+  freqContainer.appendChild(freqRange)
+  el.appendChild(freqContainer)
 
+  var detuneContainer = document.createElement("div")
+  detuneContainer.setAttribute("class", "detune-container el-container")
   var detuneRange = document.createElement("input")
   detuneRange.setAttribute("type", "range")
   detuneRange.setAttribute("class", "detune-range")
@@ -29,9 +43,16 @@ module.exports = function(el, node){
     node.detune.value = e.target.valueAsNumber
     detuneInfo.textContent = e.target.valueAsNumber
   })
-  el.appendChild(detuneInfo)
-  el.appendChild(detuneRange)
+  var detuneLabel = document.createElement("span")
+  detuneLabel.textContent = "detune"
+  detuneLabel.setAttribute("class", "label el-label")
+  detuneContainer.appendChild(detuneLabel)
+  detuneContainer.appendChild(detuneInfo)
+  detuneContainer.appendChild(detuneRange)
+  el.appendChild(detuneContainer)
 
+  var qContainer = document.createElement("div")
+  qContainer.setAttribute("class", "q-container el-container")
   var qRange = document.createElement("input")
   qRange.setAttribute("type", "range")
   qRange.setAttribute("class", "q-range")
@@ -45,9 +66,16 @@ module.exports = function(el, node){
     node.Q.value = e.target.valueAsNumber
     qInfo.textContent = e.target.valueAsNumber
   })
-  el.appendChild(qInfo)
-  el.appendChild(qRange)
+  var qLabel = document.createElement("span")
+  qLabel.textContent = "Q"
+  qLabel.setAttribute("class", "label el-label")
+  qContainer.appendChild(qLabel)
+  qContainer.appendChild(qInfo)
+  qContainer.appendChild(qRange)
+  el.appendChild(qContainer)
 
+  var gainContainer = document.createElement("div")
+  gainContainer.setAttribute("class", "gain-container el-container")
   var gainRange = document.createElement("input")
   gainRange.setAttribute("type", "range")
   gainRange.setAttribute("class", "gain-range")
@@ -61,9 +89,16 @@ module.exports = function(el, node){
     node.gain.value = e.target.valueAsNumber
     gainInfo.textContent = e.target.valueAsNumber
   })
-  el.appendChild(gainInfo)
-  el.appendChild(gainRange)
+  var gainLabel = document.createElement("span")
+  gainLabel.textContent = "gain"
+  gainLabel.setAttribute("class", "label el-label")
+  gainContainer.appendChild(gainLabel)
+  gainContainer.appendChild(gainInfo)
+  gainContainer.appendChild(gainRange)
+  el.appendChild(gainContainer)
 
+  var typeContainer = document.createElement("div")
+  typeContainer.setAttribute("class", "type-container el-container")
   var typeSelect = document.createElement("select")
   typeSelect.setAttribute("type", "text")
   typeSelect.setAttribute("class", "type-select")
@@ -76,5 +111,10 @@ module.exports = function(el, node){
   typeSelect.addEventListener("change", function(e){
     node.type = e.target.value
   })
-  el.appendChild(typeSelect)
+  var typeLabel = document.createElement("span")
+  typeLabel.textContent = "type"
+  typeLabel.setAttribute("class", "label el-label")
+  typeContainer.appendChild(typeLabel)
+  typeContainer.appendChild(typeSelect)
+  el.appendChild(typeContainer)
 }

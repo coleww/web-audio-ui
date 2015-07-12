@@ -1,6 +1,13 @@
 module.exports = function(el, node){
-  el.setAttribute("class", "delay")
+  el.setAttribute("class", "node-container delay")
 
+  var label = document.createElement("span")
+  label.textContent = "Delay"
+  label.setAttribute("class", "label node-label")
+  el.appendChild(label)
+
+  var delayContainer = document.createElement("div")
+  delayContainer.setAttribute("class", "delay-container el-container")
   var delayRange = document.createElement("input")
   delayRange.setAttribute("type", "range")
   delayRange.setAttribute("class", "delay-range")
@@ -15,6 +22,11 @@ module.exports = function(el, node){
     node.delayTime.value = e.target.valueAsNumber
     delayInfo.textContent = e.target.valueAsNumber
   })
-  el.appendChild(delayInfo)
-  el.appendChild(delayRange)
+  var delayLabel = document.createElement("span")
+  delayLabel.textContent = "Time"
+  delayLabel.setAttribute("class", "label el-label")
+  delayContainer.appendChild(delayLabel)
+  delayContainer.appendChild(delayInfo)
+  delayContainer.appendChild(delayRange)
+  el.appendChild(delayContainer)
 }
