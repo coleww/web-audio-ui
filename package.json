@@ -1,0 +1,23 @@
+{
+  "name": "web-audio-ui",
+  "description": "Put A Description Here!",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify www/demo.js -o www/bundle.js",
+    "test": "node test.js -o www/bundle.js",
+    "watch": "watchify www/demo.js -o www/bundle.js --debug --verbose"
+  },
+  "devDependencies": {
+    "browserify": "*",
+    "tape": "*",
+    "watchify": "*"
+  },
+  "keywords": [
+    "web-audio",
+    "audio",
+    "buttons"
+  ],
+  "author": "Cole Willsea <coleww@gmail.com> (http://colewillsea.com/)",
+  "license": "MIT"
+}
