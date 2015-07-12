@@ -9,7 +9,6 @@ tap.test('Oscillator',function(t){
 
   var osc = context.createOscillator()
   var el = webAudioUI(osc)
-  console.log(osc.detune.value)
   var typeSelect = el.querySelector('.type-select')
   t.looseEqual(typeSelect.value, 'sine', 'default')
   triggerChange(typeSelect, 'sawtooth')
@@ -58,11 +57,18 @@ tap.test('Oscillator',function(t){
 
 // })
 
-// tap.test('Delay',function(t){
-//   var osc = context.createDelay()
-//   var el = webAudioUI(osc)
+tap.test('Delay',function(t){
+  t.plan(2)
+  var delay = context.createDelay(5.0)
+  var el = webAudioUI(delay)
 
-// })
+  var delayRange = el.querySelector('.delay-range')
+  t.looseEqual(delayRange.value, 0, 'default')
+  triggerChange(delayRange, 3)
+  t.looseEqual(delay.delayTime.value, 3, 'updates delay')
+  triggerChange(delayRange, 0)
+  document.body.appendChild(el)
+})
 
 // tap.test('Panner',function(t){
 //   var osc = context.createPanner()
