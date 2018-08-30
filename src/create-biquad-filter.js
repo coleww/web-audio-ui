@@ -12,10 +12,11 @@ module.exports = function(el, node){
   freqRange.setAttribute("type", "range")
   freqRange.setAttribute("class", "freq-range")
   freqRange.setAttribute("min", 1)
+  freqRange.setAttribute("max", 20000)
   freqRange.setAttribute("value", node.frequency.value)
-  freqRange.setAttribute("max", 5000)
   var freqInfo = document.createElement("span")
   freqInfo.setAttribute("class", "freq-info")
+  freqInfo.textContent = node.frequency.value
   freqRange.addEventListener("change", function(e){
     node.frequency.value = e.target.valueAsNumber
     freqInfo.textContent = e.target.valueAsNumber
@@ -34,8 +35,8 @@ module.exports = function(el, node){
   detuneRange.setAttribute("type", "range")
   detuneRange.setAttribute("class", "detune-range")
   detuneRange.setAttribute("min", -1200)
-  detuneRange.setAttribute("value", node.detune.value)
   detuneRange.setAttribute("max", 1200)
+  detuneRange.setAttribute("value", node.detune.value)
   var detuneInfo = document.createElement("span")
   detuneInfo.setAttribute("class", "detune-info")
   detuneInfo.textContent = node.detune.value
@@ -57,8 +58,8 @@ module.exports = function(el, node){
   qRange.setAttribute("type", "range")
   qRange.setAttribute("class", "q-range")
   qRange.setAttribute("min", 0)
-  qRange.setAttribute("value", node.Q.value)
   qRange.setAttribute("max", 1000)
+  qRange.setAttribute("value", node.Q.value)
   var qInfo = document.createElement("span")
   qInfo.setAttribute("class", "q-info")
   qInfo.textContent = node.Q.value
@@ -79,9 +80,9 @@ module.exports = function(el, node){
   var gainRange = document.createElement("input")
   gainRange.setAttribute("type", "range")
   gainRange.setAttribute("class", "gain-range")
-  gainRange.setAttribute("min", -40)
-  gainRange.setAttribute("value", node.gain.value)
+  gainRange.setAttribute("min", 0)
   gainRange.setAttribute("max", 40)
+  gainRange.setAttribute("value", node.gain.value)
   var gainInfo = document.createElement("span")
   gainInfo.setAttribute("class", "gain-info")
   gainInfo.textContent = node.gain.value

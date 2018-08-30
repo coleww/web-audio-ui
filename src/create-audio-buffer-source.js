@@ -35,8 +35,8 @@ module.exports = function(el, node){
   playBackRange.setAttribute("type", "range")
   playBackRange.setAttribute("class", "play-back-range")
   playBackRange.setAttribute("min", 0.1)
+  playBackRange.setAttribute("max", 4)
   playBackRange.setAttribute("value", node.playbackRate.value)
-  playBackRange.setAttribute("max", 10)
   playBackRange.setAttribute("step", 0.05)
   var playBackInfo = document.createElement("span")
   playBackInfo.setAttribute("class", "play-back-info")
@@ -81,9 +81,9 @@ module.exports = function(el, node){
   loopStartRange.setAttribute("type", "range")
   loopStartRange.setAttribute("class", "loop-start-range")
   loopStartRange.setAttribute("min", 0)
-  loopStartRange.setAttribute("value", node.loopStart)
   loopStartRange.setAttribute("max", 100)
   loopStartRange.setAttribute("step", 0.05)
+  loopStartRange.setAttribute("value", node.loopStart)
   var loopStartInfo = document.createElement("span")
   loopStartInfo.setAttribute("class", "loop-start-info")
   loopStartInfo.textContent = node.loopStart
@@ -105,12 +105,12 @@ module.exports = function(el, node){
   loopEndRange.setAttribute("type", "range")
   loopEndRange.setAttribute("class", "loop-end-range")
   loopEndRange.setAttribute("min", 0)
-  loopEndRange.setAttribute("value", node.loopEnd)
-  loopEndRange.setAttribute("max", 100)
+  loopEndRange.setAttribute("max", node.buffer.duration)
+  loopEndRange.setAttribute("value", node.buffer.duration)
   loopEndRange.setAttribute("step", 0.05)
   var loopEndInfo = document.createElement("span")
   loopEndInfo.setAttribute("class", "loop-end-info")
-  loopEndInfo.textContent = node.loopEnd
+  loopEndInfo.textContent = node.buffer.duration
   loopEndRange.addEventListener("change", function(e){
     node.loopEnd = e.target.valueAsNumber
     loopEndInfo.textContent = e.target.valueAsNumber

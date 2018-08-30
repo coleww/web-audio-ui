@@ -13,8 +13,8 @@ module.exports = function(el, node){
   gainRange.setAttribute("class", "gain-range")
   gainRange.setAttribute("min", 0)
   gainRange.setAttribute("step", 0.05)
-  gainRange.setAttribute("value", node.gain.value)
   gainRange.setAttribute("max", 1)
+  gainRange.setAttribute("value", node.gain.value)
   var gainInfo = document.createElement("span")
   gainInfo.setAttribute("class", "gain-info")
   gainInfo.textContent = node.gain.value

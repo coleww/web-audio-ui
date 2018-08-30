@@ -13,8 +13,8 @@ module.exports = function(el, node){
   delayRange.setAttribute("class", "delay-range")
   delayRange.setAttribute("min", 0)
   delayRange.setAttribute("step", 0.1)
-  delayRange.setAttribute("value", node.delayTime.value)
   delayRange.setAttribute("max", 10)
+  delayRange.setAttribute("value", node.delayTime.value)
   var delayInfo = document.createElement("span")
   delayInfo.setAttribute("class", "delay-info")
   delayInfo.textContent = node.delayTime.value

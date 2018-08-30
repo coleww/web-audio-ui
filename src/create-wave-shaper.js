@@ -16,8 +16,8 @@ module.exports = function(el, node){
   amountRange.setAttribute("type", "range")
   amountRange.setAttribute("class", "amount-range")
   amountRange.setAttribute("min", 0)
-  amountRange.setAttribute("value", amount)
   amountRange.setAttribute("max", 1000)
+  amountRange.setAttribute("value", amount)
   var amountInfo = document.createElement("span")
   amountInfo.setAttribute("class", "amount-info")
   amountInfo.textContent = amount

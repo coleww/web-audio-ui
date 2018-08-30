@@ -12,8 +12,8 @@ module.exports = function(el, node){
   freqRange.setAttribute("type", "range")
   freqRange.setAttribute("class", "freq-range")
   freqRange.setAttribute("min", 1)
+  freqRange.setAttribute("max", 20000)
   freqRange.setAttribute("value", node.frequency.value)
-  freqRange.setAttribute("max", 5000)
   var freqInfo = document.createElement("span")
   freqInfo.setAttribute("class", "freq-info")
   freqRange.addEventListener("change", function(e){
@@ -34,8 +34,8 @@ module.exports = function(el, node){
   detuneRange.setAttribute("type", "range")
   detuneRange.setAttribute("class", "detune-range")
   detuneRange.setAttribute("min", -1200)
-  detuneRange.setAttribute("value", node.detune.value)
   detuneRange.setAttribute("max", 1200)
+  detuneRange.setAttribute("value", node.detune.value)
   var detuneInfo = document.createElement("span")
   detuneInfo.setAttribute("class", "detune-info")
   detuneInfo.textContent = node.detune.value
