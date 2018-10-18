@@ -65,6 +65,7 @@ module.exports = function(el, node){
     opt.value = (loop == 'true') ? 1 : 0
     loopSelect.appendChild(opt)
   })
+  loopSelect.value = 1
   loopSelect.addEventListener("change", function(e){
     node.loop = Boolean(e.target.value)
   })

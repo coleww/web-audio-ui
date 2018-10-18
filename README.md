@@ -1,6 +1,11 @@
 web-audio-ui
 ----------------
 
+
+FIX buffer looping thing
+restrict biquad Q to something sensible
+
+
 [![NPM](https://nodei.co/npm/web-audio-ui.png)](https://nodei.co/npm/web-audio-ui/)
 
 generate plain UI widgets for web audio nodes.
