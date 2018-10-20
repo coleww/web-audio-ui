@@ -1,6 +1,6 @@
 
 var context = new (window.AudioContext || window.webkitAudioContext)()
-var ui = require('../').generate
+var ui = require('../')
 
 var osc = context.createOscillator()
 var oscEl = ui(osc)

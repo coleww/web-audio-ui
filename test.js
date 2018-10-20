@@ -2,7 +2,20 @@ var tap = require('tape')
 var triggerChange = require('trigger-change')
 
 var context = new (window.AudioContext || window.webkitAudioContext)()
-var webAudioUI = require('./').generate
+var webAudioUI = require('./')
+
+tap.test('Delay',function(t){
+  t.plan(2)
+  var delay = context.createDelay(5.0)
+  var el = webAudioUI(delay)
+
+  var delayRange = el.querySelector('.delayTime-range')
+  t.looseEqual(delayRange.value, 0, 'default')
+  triggerChange(delayRange, 3)
+  t.looseEqual(delay.delayTime.value, 3, 'updates delay')
+  triggerChange(delayRange, 0)
+  document.body.appendChild(el)
+})
 
 tap.test('Oscillator',function(t){
   t.plan(6)
@@ -15,7 +28,7 @@ tap.test('Oscillator',function(t){
   triggerChange(typeSelect, 'sawtooth')
   t.looseEqual(osc.type, 'sawtooth', 'updates osc')
 
-  var freqRange = el.querySelector('.freq-range')
+  var freqRange = el.querySelector('.frequency-range')
   t.looseEqual(freqRange.value, 440, 'default')
   triggerChange(freqRange, 1000)
   t.looseEqual(osc.frequency.value, 1000, 'updates osc')
@@ -39,7 +52,7 @@ tap.test('BiquadFilter',function(t){
   triggerChange(typeSelect, 'peaking')
   t.looseEqual(filter.type, 'peaking', 'updates filter')
 
-  var freqRange = el.querySelector('.freq-range')
+  var freqRange = el.querySelector('.frequency-range')
   t.looseEqual(freqRange.value, 350, 'default freq')
   triggerChange(freqRange, 1000)
   t.looseEqual(filter.frequency.value, 1000, 'updates filter')
@@ -50,15 +63,15 @@ tap.test('BiquadFilter',function(t){
   t.looseEqual(filter.detune.value, 400, 'updates filter')
   triggerChange(detuneRange, 0)
 
-  var qRange = el.querySelector('.q-range')
+  var qRange = el.querySelector('.Q-range')
   t.looseEqual(qRange.value, 1, 'default q')
   triggerChange(qRange, 1)
   t.looseEqual(filter.Q.value, 1, 'updates filter')
 
   var gainRange = el.querySelector('.gain-range')
   t.looseEqual(gainRange.value, 0, 'default')
-  triggerChange(gainRange, 22)
-  t.looseEqual(filter.gain.value, 22, 'updates filter')
+  triggerChange(gainRange, 0.5)
+  t.looseEqual(filter.gain.value, 0.5, 'updates filter')
 
   document.body.appendChild(el)
 })
@@ -86,7 +99,7 @@ tap.test('WaveShaper',function(t){
   triggerChange(amountRange, 50)
   t.notEqual(old, waveShaper.curve, 'updates curve')
 
-  var oversampleSelect = el.querySelector('.over-sample-select')
+  var oversampleSelect = el.querySelector('.oversample-select')
   t.looseEqual(oversampleSelect.value, 'none')
   triggerChange(oversampleSelect, '4x')
   t.equal(waveShaper.oversample, '4x', 'updates waveShaper')
@@ -94,34 +107,36 @@ tap.test('WaveShaper',function(t){
 })
 
 tap.test('AudioBufferSource',function(t){
-  t.plan(8)
+  t.plan(10)
 
   var abs = context.createBufferSource()
-  var el = webAudioUI(abs)
+  var buffer = context.createBuffer(2, context.sampleRate * 3, context.sampleRate)
+  abs.buffer = buffer
 
-  // Y NO DETUNE?!?!
-  // var detuneRange = el.querySelector('.detune-range')
-  // t.looseEqual(detuneRange.value, 0, 'default detune')
-  // triggerChange(detuneRange, 400)
-  // t.looseEqual(abs.detune.value, 400, 'updates abs')
-  // triggerChange(detuneRange, 0)
+  var el = webAudioUI(abs)
+  console.log('HEY', abs.loop)
+
+  var detuneRange = el.querySelector('.detune-range')
+  t.looseEqual(detuneRange.value, 0, 'default detune')
+  triggerChange(detuneRange, 400)
+  t.looseEqual(abs.detune.value, 400, 'updates abs')
 
   var loopSelect = el.querySelector('.loop-select')
-  t.looseEqual(loopSelect.value, 0)
-  triggerChange(loopSelect, 1)
+  t.looseEqual(loopSelect.value, 'false')
+  triggerChange(loopSelect, 'true')
   t.ok(abs.loop, 'updates abs')
 
-  var loopStartRange = el.querySelector('.loop-start-range')
+  var loopStartRange = el.querySelector('.loopStart-range')
   t.looseEqual(loopStartRange.value, 0, 'default loopStart')
-  triggerChange(loopStartRange, 5)
-  t.looseEqual(abs.loopStart, 5, 'updates abs')
+  triggerChange(loopStartRange, 2)
+  t.looseEqual(abs.loopStart, 2, 'updates abs')
 
-  var loopEndRange = el.querySelector('.loop-end-range')
+  var loopEndRange = el.querySelector('.loopEnd-range')
   t.looseEqual(loopEndRange.value, 0, 'default loopEnd')
   triggerChange(loopEndRange, 1)
   t.looseEqual(abs.loopEnd, 1, 'updates abs')
 
-  var playBackRange = el.querySelector('.play-back-range')
+  var playBackRange = el.querySelector('.playbackRate-range')
   t.looseEqual(playBackRange.value, 1, 'default')
   triggerChange(playBackRange, 1.5)
   t.looseEqual(abs.playbackRate.value, 1.5, 'updates abs')
@@ -133,7 +148,8 @@ tap.test('Delay',function(t){
   var delay = context.createDelay(5.0)
   var el = webAudioUI(delay)
 
-  var delayRange = el.querySelector('.delay-range')
+  var delayRange = el.querySelector('.delayTime-range')
+  console.log(el, delayRange)
   t.looseEqual(delayRange.value, 0, 'default')
   triggerChange(delayRange, 3)
   t.looseEqual(delay.delayTime.value, 3, 'updates delay')
