@@ -1,7 +1,7 @@
 {
   "name": "web-audio-ui",
   "description": "Web Audio UI Components",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "index.js",
   "scripts": {
     "build": "browserify www/demo.js -o www/bundle.js",
