@@ -155,8 +155,16 @@ tap.test('Delay',function(t){
   document.body.appendChild(el)
 })
 
-// tap.test('Panner',function(t){
-//   var osc = context.createPanner()
-//   var el = webAudioUI(osc)
+tap.test('StereoPanner',function(t){
+  var pan = context.createStereoPanner()
+  var el = webAudioUI(pan)
 
-// })
+  var panRange = el.querySelector('.pan-range')
+  t.looseEqual(panRange.value, 0, 'default')
+  triggerChange(panRange, -1)
+  t.looseEqual(pan.pan.value, -1, 'updates pan')
+  triggerChange(panRange, 3)
+  t.looseEqual(pan.pan.value, 1, 'clamps pan')
+  document.body.appendChild(el)
+
+})

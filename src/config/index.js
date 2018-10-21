@@ -5,4 +5,5 @@ module.exports = {
   GainNode: require('./gain'),
   DelayNode: require('./delay'),
   WaveShaperNode: require('./wave-shaper'),
+  StereoPannerNode: require('./stereo-panner'),
 }
