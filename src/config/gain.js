@@ -2,7 +2,6 @@ module.exports = function (node) {
   return {
     className: "gain",
     label: "Gain",
-    type: "GainNode",
     attributes: [
       {
         attribute: "gain",

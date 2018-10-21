@@ -2,7 +2,6 @@ module.exports = function (node) {
   return {
     className: "filter",
     label: "Filter",
-    type: "BiquadFilterNode",
     attributes: [
       {
         attribute: "frequency",

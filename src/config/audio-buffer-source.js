@@ -2,7 +2,6 @@ module.exports = function (node) {
   return {
     className: "audio-buffer-source",
     label: "Audio Buffer Source",
-    type: "AudioBufferSourceNode",
     attributes: [
       {
         attribute: "detune",

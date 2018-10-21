@@ -2,7 +2,6 @@ module.exports = function (node) {
   return {
     className: "stereo-panner",
     label: "Stereo Panner",
-    type: "StereoPannerNode",
     attributes: [
       {
         attribute: "pan",

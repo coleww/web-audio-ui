@@ -6,7 +6,6 @@ module.exports = function (node) {
   return {
     className: "wave-shaper",
     label: "Wave Shaper",
-    type: "WaveShaperNode",
     attributes: [
       {
         attribute: "amount",

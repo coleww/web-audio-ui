@@ -5,7 +5,7 @@ var defaultConfigs = require('./src/config')
 
 module.exports = function(node, cfg){
   var config = cfg || {}
-  var type = config.type || typey(node)
+  var type = typey(node)
   var defaultConfig = defaultConfigs[type] && defaultConfigs[type](node)
   var mergedConfig = Object.assign({}, defaultConfig, config)
   return createEl(node, mergedConfig)

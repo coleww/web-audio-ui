@@ -2,7 +2,6 @@ module.exports = function (node) {
   return {
     className: "oscillator",
     label: "Oscillator",
-    type: "OscillatorNode",
     attributes: [
       {
         attribute: "frequency",

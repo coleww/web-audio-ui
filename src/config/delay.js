@@ -2,7 +2,6 @@ module.exports = function (node) {
   return {
     className: "delay",
     label: "Delay",
-    type: "DelayNode",
     attributes: [
       {
         attribute: "delayTime",
