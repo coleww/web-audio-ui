@@ -21,11 +21,22 @@ however you can customize that by passing a config object in order to change beh
 - AudioBufferSource
 - WaveShaper (uses this [distortion curve](https://www.npmjs.com/package/make-distortion-curve) as a default)
 - StereoPanner
+- DynamicsCompressor
+
+### TODO:
+
+- add analyserNode (and basic oscilliscope config from https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode ?)
+- add pannerNoder/audioListener (SO MANY ATTRIBUTES ZOMG)
+- use setValueAtTime in the default configs 
+- start folder for default configs for web-audio modules on npm
+- make range inputs editable by typing in a number
 
 ### INSTALL
+
 `npm install web-audio-ui`
 
 ### SIMPLE USE
+
 
 ```
 var ui = require('web-audio-ui')

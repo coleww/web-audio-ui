@@ -16,6 +16,9 @@ var panEl = ui(pan)
 var gain = context.createGain()
 var gainEl = ui(gain)
 
+var compressor = context.createDynamicsCompressor()
+var compressorEl = ui(compressor)
+
 
 var delay = context.createDelay()
 var delayEl = ui(delay)
@@ -24,12 +27,14 @@ document.body.appendChild(oscEl)
 document.body.appendChild(filterEl)
 document.body.appendChild(gainEl)
 document.body.appendChild(delayEl)
+document.body.appendChild(compressorEl)
 document.body.appendChild(panEl)
 
 osc.connect(filter)
 filter.connect(gain)
 gain.connect(delay)
-delay.connect(pan)
+delay.connect(compressor)
+compressor.connect(pan)
 pan.connect(context.destination)
 gain.gain.value = 0.1
 osc.start()

@@ -78,6 +78,41 @@ tap.test('BiquadFilter',function(t){
   document.body.appendChild(el)
 })
 
+
+tap.test('DynamicsCompressor',function(t){
+  t.plan(10)
+
+  var compressor = context.createDynamicsCompressor()
+  var el = webAudioUI(compressor)
+
+  var threshRange = el.querySelector('.threshold-range')
+  t.looseEqual(threshRange.value, compressor.threshold.value, 'default thresh')
+  triggerChange(threshRange, -100)
+  t.looseEqual(compressor.threshold.value, -100, 'updates threshold')
+
+  var kneeRange = el.querySelector('.knee-range')
+  t.looseEqual(kneeRange.value, compressor.knee.value, 'default knee')
+  triggerChange(kneeRange, 20)
+  t.looseEqual(compressor.knee.value, 20, 'updates knee')
+
+  var ratioRange = el.querySelector('.ratio-range')
+  t.looseEqual(ratioRange.value, compressor.ratio.value, 'default ratio')
+  triggerChange(ratioRange, 20)
+  t.looseEqual(compressor.ratio.value, 20, 'updates ratio')
+
+  var attackRange = el.querySelector('.attack-range')
+  t.looseEqual(Number(attackRange.value).toFixed(10), compressor.attack.value.toFixed(10), 'default attack')
+  triggerChange(attackRange, 0.5)
+  t.looseEqual(compressor.attack.value, 0.5, 'updates attack')
+
+  var releaseRange = el.querySelector('.release-range')
+  t.looseEqual(releaseRange.value, compressor.release.value, 'default release')
+  triggerChange(releaseRange, 0.5)
+  t.looseEqual(compressor.release.value, 0.5, 'updates release')
+
+  document.body.appendChild(el)
+})
+
 tap.test('Gain',function(t){
   t.plan(2)
   var gain = context.createGain()
