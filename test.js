@@ -3,6 +3,8 @@ var triggerChange = require('trigger-change')
 
 var context = new (window.AudioContext || window.webkitAudioContext)()
 var webAudioUI = require('./')
+var createRange = require('./src/create-range')
+var createSelect = require('./src/create-select')
 
 tap.test('Delay',function(t){
   t.plan(2)
@@ -156,6 +158,7 @@ tap.test('Delay',function(t){
 })
 
 tap.test('StereoPanner',function(t){
+  t.plan(3)
   var pan = context.createStereoPanner()
   var el = webAudioUI(pan)
 
@@ -167,4 +170,67 @@ tap.test('StereoPanner',function(t){
   t.looseEqual(pan.pan.value, 1, 'clamps pan')
   document.body.appendChild(el)
 
+})
+
+tap.test('CreateRange',function(t){
+  t.plan(10)
+  var thing = {
+    foo: 5,
+  }
+  var el = createRange({
+    attribute: "frequency",
+    type: "range",
+    label: "Frequency",
+    min: 0,
+    max: 10,
+    step: 1,
+    value: thing.foo,
+    update: function (val) {
+      thing.foo = val
+    }
+  })
+  t.assert(el.classList.contains('frequency-container'), 'makes container')
+
+  var range = el.querySelector('.frequency-range')
+  t.assert(range, 'makes range input')
+  t.looseEqual(range.min, 0, 'sets minimum value')
+  t.looseEqual(range.max, 10, 'sets maximum value')
+  t.looseEqual(range.step, 1, 'sets step')
+  t.looseEqual(range.value, 5, 'sets value')
+
+  var valueLabel = el.querySelector('.frequency-info')
+  t.looseEqual(valueLabel.textContent, 5)
+  triggerChange(range, 3)
+  t.looseEqual(valueLabel.textContent, 3, 'updates valueLabel')
+  t.looseEqual(thing.foo, 3, 'updates arbitrary object')
+
+
+  var label = el.querySelector('.frequency-label')
+  t.looseEqual(label.textContent, 'Frequency', 'makes label object')
+})
+
+
+tap.test('CreateSelect',function(t){
+  t.plan(4)
+  var thing = {
+    foo: 'bar',
+  }
+  var el = createSelect({
+    attribute: "foo",
+    type: "select",
+    label: "Foo",
+    opts: ["bar", "baz", "wow"],
+    value: thing.foo,
+    update: function (val) {
+      thing.foo = val
+    },
+  })
+  t.assert(el.classList.contains('foo-container'), 'makes container')
+  
+  var select = el.querySelector('.foo-select')
+  t.assert(select, 'makes select input')
+  t.looseEqual(select.value, 'bar', 'sets value')
+
+  var label = el.querySelector('.foo-label')
+  t.looseEqual(label.textContent, 'Foo', 'makes label object')
 })

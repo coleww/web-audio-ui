@@ -16,11 +16,11 @@ module.exports = function createSelect(config) {
   })
 
   var selectLabel = document.createElement("span")
-  selectLabel.textContent = "type"
+  selectLabel.textContent = config.label
   selectLabel.setAttribute("class", config.attribute + "-label label el-label")
 
   selectContainer.appendChild(selectLabel)
   selectContainer.appendChild(selectInput)
-  
+
   return selectContainer
 }
