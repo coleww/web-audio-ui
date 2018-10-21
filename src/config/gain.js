@@ -10,11 +10,11 @@ module.exports = function (node) {
         label: "Gain",
         min: 0,
         max: 1,
+        step: "any",
         value: node.gain.value,
         update: function (val) {
           node.gain.value = val
-        },
-        step: 0.05
+        }
       }
     ]
   }

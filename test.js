@@ -93,10 +93,10 @@ tap.test('WaveShaper',function(t){
   var el = webAudioUI(waveShaper)
 
   var amountRange = el.querySelector('.amount-range')
-  t.looseEqual(amountRange.value, 100, 'default')
+  t.looseEqual(amountRange.value, 50, 'default')
 
   var old = waveShaper.curve
-  triggerChange(amountRange, 50)
+  triggerChange(amountRange, 100)
   t.notEqual(old, waveShaper.curve, 'updates curve')
 
   var oversampleSelect = el.querySelector('.oversample-select')
@@ -114,7 +114,6 @@ tap.test('AudioBufferSource',function(t){
   abs.buffer = buffer
 
   var el = webAudioUI(abs)
-  console.log('HEY', abs.loop)
 
   var detuneRange = el.querySelector('.detune-range')
   t.looseEqual(detuneRange.value, 0, 'default detune')
@@ -149,7 +148,6 @@ tap.test('Delay',function(t){
   var el = webAudioUI(delay)
 
   var delayRange = el.querySelector('.delayTime-range')
-  console.log(el, delayRange)
   t.looseEqual(delayRange.value, 0, 'default')
   triggerChange(delayRange, 3)
   t.looseEqual(delay.delayTime.value, 3, 'updates delay')

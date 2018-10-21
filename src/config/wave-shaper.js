@@ -1,8 +1,8 @@
 var makeDistortionCurve = require('make-distortion-curve')
 
 module.exports = function (node) {
-  var amount = 100
-  node.curve = makeDistortionCurve(100)
+  var amount = 50
+  node.curve = makeDistortionCurve(amount)
   return {
     className: "wave-shaper",
     label: "Wave Shaper",
@@ -13,12 +13,12 @@ module.exports = function (node) {
         type: "range",
         label: "Amount",
         min: 1,
-        max: 20000,
+        max: 5000,
+        step: "any",
         value: amount,
         update: function (val) {
           node.curve = makeDistortionCurve(val)
-        },
-        step: "any"
+        }
       },
       {
         attribute: "oversample",

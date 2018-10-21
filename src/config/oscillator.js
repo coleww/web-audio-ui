@@ -8,25 +8,25 @@ module.exports = function (node) {
         attribute: "frequency",
         type: "range",
         label: "Frequency",
-        min: 1,
-        max: 20000,
+        min: 10,
+        max: node.context.sampleRate / 2,
+        step: "any",
         value: node.frequency.value,
         update: function (val) {
           node.frequency.value = val
-        },
-        step: "any"
+        }
       },
       {
         attribute: "detune",
         type: "range",
         label: "Detune",
-        min: -1200,
-        max: 1200,
+        min: -3600,
+        max: 3600,
+        step: 1,
         value: node.detune.value,
         update: function (val) {
           node.detune.value = val
-        },
-        step: "any"
+        }
       },
       {
         attribute: "type",
@@ -36,7 +36,7 @@ module.exports = function (node) {
         value: node.type,
         update: function (val) {
           node.type = val
-        },
+        }
       }
     ]
   }

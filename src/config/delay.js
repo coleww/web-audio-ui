@@ -9,12 +9,12 @@ module.exports = function (node) {
         type: "range",
         label: "Delay Time",
         min: 0,
-        max: 20000,
+        max: 30,
+        step: "any",
         value: node.delayTime.value,
         update: function (val) {
           node.delayTime.value = val
-        },
-        step: "any"
+        }
       }
     ]
   }

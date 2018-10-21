@@ -8,25 +8,25 @@ module.exports = function (node) {
         attribute: "detune",
         type: "range",
         label: "Detune",
-        min: -1200,
-        max: 1200,
+        min: -3600,
+        max: 3600,
+        step: "any",
         value: node.detune.value,
         update: function (val) {
           node.detune.value = val
-        },
-        step: "any"
+        }
       },
       {
         attribute: "playbackRate",
         type: "range",
         label: "Playback Rate",
         min: 0.1,
-        max: 5,
+        max: 4,
+        step: "any",
         value: node.playbackRate.value,
         update: function (val) {
           node.playbackRate.value = val
-        },
-        step: "any"
+        }
       },
       {
         attribute: "loopStart",
@@ -34,11 +34,11 @@ module.exports = function (node) {
         label: "Loop Start",
         min: 0,
         max: node.buffer.duration,
+        step: "any",
         value: node.loopStart,
         update: function (val) {
           node.loopStart = val
-        },
-        step: "any"
+        }
       },
       {
         attribute: "loopEnd",
@@ -46,11 +46,11 @@ module.exports = function (node) {
         label: "Loop End",
         min: 0,
         max: node.buffer.duration,
+        step: "any",
         value: node.loopEnd,
         update: function (val) {
           node.loopEnd = val
-        },
-        step: "any"
+        }
       },
       {
         attribute: "loop",
